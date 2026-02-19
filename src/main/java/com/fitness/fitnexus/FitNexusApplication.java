@@ -8,6 +8,7 @@ public class FitNexusApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FitNexusApplication.class, args);
+        System.out.println("Tomcat started on port 8080");
     }
 
 }
