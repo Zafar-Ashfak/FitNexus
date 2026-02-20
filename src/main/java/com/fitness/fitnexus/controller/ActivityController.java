@@ -29,7 +29,7 @@ public class ActivityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ActivityResponse>> getUserActivities(String userId) {
+    public ResponseEntity<List<ActivityResponse>> getUserActivities(@RequestHeader("X-User-ID") String userId) {
        List<ActivityResponse> activityList = this.activityService.getUserActivities(userId);
        if (activityList.isEmpty()) {
            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
