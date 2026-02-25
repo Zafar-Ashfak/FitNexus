@@ -29,7 +29,7 @@ public class RecommendationController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<RecommendationResponse>> getUserRecommendations(@RequestParam String userId) {
+    public ResponseEntity<List<RecommendationResponse>> getUserRecommendations(@PathVariable String userId) {
         List<RecommendationResponse> userRecommendationList = this.recommendationService.getUserRecommendations(userId);
        if (userRecommendationList.isEmpty()) {
            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -38,8 +38,8 @@ public class RecommendationController {
        return ResponseEntity.ok(userRecommendationList);
     }
 
-    @GetMapping("/activity")
-    public ResponseEntity<List<RecommendationResponse>> getActivityRecommendations(@RequestHeader("X-Activity-ID") String activityId) {
+    @GetMapping("/activity/{activityId}")
+    public ResponseEntity<List<RecommendationResponse>> getActivityRecommendations(@PathVariable String activityId) {
         List<RecommendationResponse> activityRecommendationList = this.recommendationService.getActivityRecommendations(activityId);
         if (activityRecommendationList.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
